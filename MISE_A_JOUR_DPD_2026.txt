@@ -1,0 +1,17 @@
+Mise à jour DPD 2026 intégrée
+
+Source utilisée :
+- FLY 2026.xlsx
+- Onglet : Predict + Relais
+- Validité : du 01/01/2026 au 31/12/2026
+
+Mises à jour appliquées :
+- Grille DPD Predict mise à jour
+- Grille DPD Relais mise à jour dans les données internes
+- Participation sûreté : 0,86 € HT / colis
+- Contribution Logistique Responsable : 0,27 € HT / colis
+- Frais fixes DPD appliqués dans l'outil : 1,13 € HT / colis
+- Supplément colis hors norme / 20 à 30 kg : 50,00 € HT / colis
+
+Non modifié automatiquement :
+- Surcharge gasoil DPD en pourcentage, car le fichier indique une indexation DIREM mais ne donne pas ici une valeur unique figée.

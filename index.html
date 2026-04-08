@@ -1,126 +1,135 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calcul livraison Fly Épinal</title>
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcul livraison Fly Épinal</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="assets/img/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+  <meta name="theme-color" content="#d71920">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-<div class="container">
-  <header class="header">
-    <div class="logo"><img src="assets/img/logo-fly.svg" alt="Logo Fly"></div>
-    <div>
-      <h1>Calcul livraison Fly Épinal</h1>
-    </div>
-  </header>
-
-  <section class="dashboard">
-    <div class="card">
-      <div class="card-inner">
-        <p class="step">Étape 1</p>
-        <div class="title-row">
-          <div>
-            <h2 class="section-title">Choisir le département</h2>
-          </div>
-          <div class="selected-pill" id="selectedDeptPill">88 — Vosges</div>
-        </div>
-
-        <div class="map-toolbar">
-          <div class="results-dropdown">
-            <input class="input" id="searchInput" type="text" autocomplete="off" placeholder="Recherche rapide : 75, Paris, 13, Bouches-du-Rhône...">
-            <div class="search-list" id="searchList"></div>
-          </div>
-          <button class="btn btn-soft" type="button" id="focusVosges">Retour 88</button>
-          <button class="btn btn-neutral" type="button" id="resetSearch">Effacer</button>
-        </div>
-
-        <div class="map-shell" id="mapWrap">
-          <svg id="mapSvg" viewBox="0 0 900 860" aria-label="Carte des départements français"></svg>
-          <div class="map-tip" id="mapTip"></div>
-          <div class="map-footer">
-            <div class="map-footer-note">Clique directement sur la carte ou utilise la recherche.</div>
-            <div class="map-footer-selected" id="mapFooterSelected">Département sélectionné : 88 — Vosges</div>
-          </div>
-        </div>
+  <div class="container">
+    <header class="header">
+      <div class="logo"><img src="assets/img/logo-fly.svg" alt="Logo Fly"></div>
+      <div>
+        <h1>Calcul livraison Fly Épinal</h1>
       </div>
-    </div>
+    </header>
 
-    <div class="right-stack">
+    <section class="dashboard">
       <div class="card">
         <div class="card-inner">
-          <p class="step">Étape 2</p>
-          <h2 class="section-title" style="font-size:2.05rem;margin-bottom:10px">Renseigner l'expédition</h2>
-          <p class="section-sub" style="margin-bottom:16px">Ajoute tes colis puis lance le calcul. Cette version fonctionne uniquement en livraison domicile.</p>
-          <div class="selected-pill" style="margin-bottom:16px;width:max-content">Livraison domicile</div>
-          <p class="service-note" id="serviceNote">Domicile : DPD si possible, sinon bascule automatique vers GEODIS.</p>
+          <p class="step">Étape 1</p>
+          <div class="title-row">
+            <div>
+              <h2 class="section-title">Choisir le département</h2>
+            </div>
+            <div class="selected-pill" id="selectedDeptPill">88 — Vosges</div>
+          </div>
 
-          <div class="parcels" id="parcels"></div>
+          <div class="map-toolbar">
+            <div class="results-dropdown">
+              <input class="input" id="searchInput" type="text" autocomplete="off"
+                placeholder="Recherche rapide : 75, Paris, 13, Bouches-du-Rhône...">
+              <div class="search-list" id="searchList"></div>
+            </div>
+            <button class="btn btn-neutral" type="button" id="resetSearch">Effacer</button>
+          </div>
 
-          <div class="actions">
-            <button class="btn btn-soft" type="button" id="addParcel">Ajouter un colis</button>
-            <button class="btn btn-primary" type="button" id="calculateBtn">Calculer</button>
-            <button class="btn btn-neutral" type="button" id="resetBtn">Vider</button>
+          <div class="map-shell" id="mapWrap">
+            <svg id="mapSvg" viewBox="0 0 900 860" aria-label="Carte des départements français"></svg>
+            <div class="map-tip" id="mapTip"></div>
+            <div class="map-footer">
+              <div class="map-footer-note">Clique directement sur la carte ou utilise la recherche.</div>
+              <div class="map-footer-selected" id="mapFooterSelected">Département sélectionné : 88 — Vosges</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <aside class="result-card" id="resultCard">
-        <div class="result-top">
-          <div>
-            <p class="step" style="margin-bottom:6px">Résultat</p>
-            <h2 class="result-title" id="carrierTitle">—</h2>
-            <p class="result-note" id="carrierNote">Renseigne les colis puis lance le calcul.</p>
+      <div class="right-stack">
+        <div class="card">
+          <div class="card-inner">
+            <p class="step">Étape 2</p>
+            <h2 class="section-title" style="font-size:2.05rem;margin-bottom:10px">Renseigner l'expédition</h2>
+            <p class="section-sub" style="margin-bottom:16px">Ajoute tes colis puis lance le calcul. Cette version
+              fonctionne uniquement en livraison domicile.</p>
+            <div class="selected-pill" style="margin-bottom:16px;width:max-content">Livraison domicile</div>
+            <p class="service-note" id="serviceNote">Domicile : DPD si possible, sinon bascule automatique vers GEODIS.
+            </p>
+
+            <div class="parcels" id="parcels"></div>
+
+            <div class="actions">
+              <button class="btn btn-soft" type="button" id="addParcel">Ajouter un colis</button>
+              <button class="btn btn-primary" type="button" id="calculateBtn">Calculer</button>
+              <button class="btn btn-neutral" type="button" id="resetBtn">Vider</button>
+            </div>
           </div>
-          <div class="badge manual" id="carrierBadge">—</div>
         </div>
 
-        <div class="big-price">
-          <span class="big-price-label">Prix client TTC</span>
-          <div class="big-price-value" id="sellerTtc">—</div>
-        </div>
-
-        <section class="result-section">
-          <div class="result-section-head">
-            <h3 class="result-section-title">Coût magasin TTC</h3>
-            <button class="toggle-btn" type="button" data-target="transportSection" aria-expanded="false">+</button>
-          </div>
-          <div class="result-section-body" id="transportSection" hidden>
-            <div class="big-price">
-              <span class="big-price-label">Coût magasin TTC</span>
-              <div class="big-price-value" id="transportTtc">—</div>
+        <aside class="result-card" id="resultCard">
+          <div class="result-top">
+            <div>
+              <p class="step" style="margin-bottom:6px">Résultat</p>
+              <h2 class="result-title" id="carrierTitle">—</h2>
+              <p class="result-note" id="carrierNote">Renseigne les colis puis lance le calcul.</p>
             </div>
+            <div class="badge manual" id="carrierBadge">—</div>
           </div>
-        </section>
 
-        <section class="result-section">
-          <div class="result-section-head">
-            <h3 class="result-section-title">Détails du calcul</h3>
-            <button class="toggle-btn" type="button" data-target="detailsSection" aria-expanded="false">+</button>
+          <div class="big-price">
+            <span class="big-price-label">Prix client TTC</span>
+            <div class="big-price-value" id="sellerTtc">—</div>
           </div>
-          <div class="result-section-body" id="detailsSection" hidden>
-            <div class="stats no-margin">
-              <div class="stat"><span>Poids réel total</span><strong id="actualWeight">0 kg</strong></div>
-              <div class="stat"><span>Poids taxable</span><strong id="chargeableWeight">0 kg</strong></div>
-              <div class="stat"><span>Base HT</span><strong id="baseHt">—</strong></div>
-              <div class="stat"><span>Frais fixes HT</span><strong id="fixedHt">—</strong></div>
-              <div class="stat"><span>Surcharge HT</span><strong id="energyHt">—</strong></div>
-              <div class="stat"><span>Supplément HT</span><strong id="extraHt">—</strong></div>
-            </div>
 
-            <div class="reason-box" style="margin-top:12px">
-              <h3>Détail du calcul</h3>
-              <ul class="reason-list" id="reasonList">
-                <li>Pas encore de calcul.</li>
-              </ul>
+          <section class="result-section">
+            <div class="result-section-head">
+              <h3 class="result-section-title">Coût magasin TTC</h3>
+              <button class="toggle-btn" type="button" data-target="transportSection" aria-expanded="false">+</button>
             </div>
-          </div>
-        </section>
-      </aside>
-    </div>
-  </section>
-</div>
-<div class="toast" id="toast"></div>
-<script src="assets/js/app.js"></script>
+            <div class="result-section-body" id="transportSection" hidden>
+              <div class="big-price">
+                <span class="big-price-label">Coût magasin TTC</span>
+                <div class="big-price-value" id="transportTtc">—</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="result-section">
+            <div class="result-section-head">
+              <h3 class="result-section-title">Détails du calcul</h3>
+              <button class="toggle-btn" type="button" data-target="detailsSection" aria-expanded="false">+</button>
+            </div>
+            <div class="result-section-body" id="detailsSection" hidden>
+              <div class="stats no-margin">
+                <div class="stat"><span>Poids réel total</span><strong id="actualWeight">0 kg</strong></div>
+                <div class="stat"><span>Poids taxable</span><strong id="chargeableWeight">0 kg</strong></div>
+                <div class="stat"><span>Base HT</span><strong id="baseHt">—</strong></div>
+                <div class="stat"><span>Frais fixes HT</span><strong id="fixedHt">—</strong></div>
+                <div class="stat"><span>Surcharge HT</span><strong id="energyHt">—</strong></div>
+                <div class="stat"><span>Supplément HT</span><strong id="extraHt">—</strong></div>
+              </div>
+
+              <div class="reason-box" style="margin-top:12px">
+                <h3>Détail du calcul</h3>
+                <ul class="reason-list" id="reasonList">
+                  <li>Pas encore de calcul.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="assets/js/app.js"></script>
 </body>
+
 </html>
